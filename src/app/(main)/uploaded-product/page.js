@@ -84,42 +84,36 @@ export default function UploadProduct() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden"
+        className="w-full max-w-[95%] bg-white rounded-3xl shadow-2xl overflow-hidden"
       >
-        {/* Header animado */}
-        <div className="relative h-80 w-full overflow-hidden">
-        <div className="relative h-64 bg-[#2d5523] flex items-center justify-center">
+        {/* Header con imagen que abarca todo */}
+        <div className="relative h-[400px] w-full overflow-hidden">
           <img
             src="https://plus.unsplash.com/premium_photo-1661879933782-2b8e7abb6e79?q=80&w=2632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Cultivos agrícolas"
-            className="absolute inset-0 w-full h-full object-cover opacity-70"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <h1 className="text-4xl font-bold text-white text-center px-4">
-              Publica tu Producto Agrícola
-            </h1>
+          <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+            <div className="text-center">
+              <motion.h1
+                variants={itemVariants}
+                className="text-5xl font-bold text-white drop-shadow-lg"
+              >
+                Publica tu Producto
+              </motion.h1>
+              <motion.p
+                variants={itemVariants}
+                className="mt-4 text-xl text-gray-200"
+              >
+                Conecta con productores de café, limón y aguacate
+              </motion.p>
+            </div>
           </div>
         </div>
-  <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60"></div>
-  <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-    <motion.h1 
-      variants={itemVariants}
-      className="text-5xl font-bold text-white drop-shadow-lg"
-    >
-      Publica tu Producto
-    </motion.h1>
-    <motion.p 
-      variants={itemVariants}
-      className="mt-4 text-xl text-gray-200"
-    >
-      Conecta con productores de café, limón y aguacate
-    </motion.p>
-  </div>
-</div>
 
-
+        {/* Formulario */}
         <form onSubmit={handleSubmit} className="p-10 space-y-8">
-          {/* Selector visual de Cultivo con efecto opaco/brillante */}
+          {/* Selector visual de Cultivo */}
           <motion.div variants={itemVariants} className="space-y-3">
             <label className="text-xl font-medium text-gray-700">
               Selecciona el Tipo de Cultivo
@@ -141,13 +135,9 @@ export default function UploadProduct() {
                     alt={option.label}
                     width={300}
                     height={200}
-                    className={`object-cover transition duration-300 ${
-                      formData.tipoCultivo === option.value
-                        ? "opacity-100"
-                        : "opacity-70 group-hover:opacity-100"
-                    }`}
+                    className="object-cover w-full h-full"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                     <span className="text-xl text-white font-bold">
                       {option.label}
                     </span>
